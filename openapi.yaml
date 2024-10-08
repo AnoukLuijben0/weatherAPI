@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  description: A simple API for retrieving weather information.
+  title: Weather API
+  version: 1.0.0
+servers:
+- url: https://api.weather.com/v1
+paths:
+  /weather:
+    get:
+      description: Retrieve the current weather data for a specific city.
+      parameters:
+      - description: Name of the city to retrieve weather for.
+        explode: true
+        in: query
+        name: city
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_weather_get_200_response'
+          description: A JSON object containing the current weather.
+        "400":
+          description: Invalid city name provided.
+        "500":
+          description: Internal server error.
+      summary: Get current weather
+components:
+  schemas:
+    _weather_get_200_response:
+      example:
+        city: London
+        temperature: 22.5
+        description: Clear sky
+      properties:
+        temperature:
+          example: 22.5
+          title: temperature
+          type: number
+        description:
+          example: Clear sky
+          title: description
+          type: string
+        city:
+          example: London
+          title: city
+          type: string
+      title: _weather_get_200_response
+      type: object
