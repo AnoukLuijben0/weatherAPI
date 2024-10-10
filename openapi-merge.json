@@ -1,7 +1,9 @@
 {
-  "inputs": [
-    { "inputFile": "weatherapiv0.yaml" },
-    { "inputFile": "weatherapiv1.yaml" }
-  ],
+  
+    "base": "weatherapiv0.yaml" ,
+    "updates": [
+       "weatherapiv1.yaml"
+    ], 
+ 
   "output": "merged.yaml"
 }
