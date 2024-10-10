@@ -47,6 +47,11 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 async def weather_get(
     city: str = Query(None, description="Name of the city to retrieve weather for.", alias="city"),
 ) -> WeatherGet200Response:
+    if city =="Rotterdam":
+        # Added own logic
+        return{"temperature": 10.0, "city": "Rotterdam"}
+    else:
+        return{"temperature": 20.0, "city": city}
     """Retrieve the current weather data for a specific city."""
     if not BaseDefaultApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
