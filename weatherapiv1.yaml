@@ -8,38 +8,38 @@ servers:
   - url: https://api.weather.com/v1
 
 paths:
-  /weather:
-    get:
-      summary: Get current weather
-      description: Retrieve the current weather data for a specific city.
-      parameters:
-        - name: city
-          in: query
-          required: true
-          description: Name of the city to retrieve weather for.
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A JSON object containing the current weather.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  temperature:
-                    type: number
-                    example: 22.5
-                  description:
-                    type: string
-                    example: Clear sky
-                  city:
-                    type: string
-                    example: London
-        '400':
-          description: Invalid city name provided.
-        '500':
-          description: Internal server error.
+  # /weather:
+  #   get:
+  #     summary: Get current weather
+  #     description: Retrieve the current weather data for a specific city.
+  #     parameters:
+  #       - name: city
+  #         in: query
+  #         required: true
+  #         description: Name of the city to retrieve weather for.
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: A JSON object containing the current weather.
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 temperature:
+  #                   type: number
+  #                   example: 22.5
+  #                 description:
+  #                   type: string
+  #                   example: Clear sky
+  #                 city:
+  #                   type: string
+  #                   example: London
+  #       '400':
+  #         description: Invalid city name provided.
+  #       '500':
+  #         description: Internal server error.
 
   /forecast:
     get:
