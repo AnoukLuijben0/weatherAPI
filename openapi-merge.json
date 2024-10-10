@@ -3,11 +3,6 @@
     { "inputFile": "weatherapiv0.yaml" },
     { "inputFile": "weatherapiv1.yaml" }
   ],
-  "output": "merged.yaml",
-  "options": {
-    "allowDuplicatePaths": true,
-    "dispute": {
-      "prefix": "WeatherAPI"
-    }
-  }
+  "output": "merged.yaml"
+
 }
