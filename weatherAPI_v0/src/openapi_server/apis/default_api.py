@@ -4,7 +4,6 @@ from typing import Dict, List  # noqa: F401
 import importlib
 import pkgutil
 
-from services.weather_servicesv0 import get_weather_for_city
 from openapi_server.apis.default_api_base import BaseDefaultApi
 import openapi_server.impl
 
@@ -48,8 +47,11 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 async def weather_get(
     city: str = Query(None, description="Name of the city to retrieve weather for.", alias="city"),
 ) -> WeatherGet200Response:
-    # Added 
-    return get_weather_for_city(city)
+    if city =="Rotterdam":
+        # Added own logic
+        return{"temperature": 10.0, "city": "Rotterdam"}
+    else:
+        return{"temperature": 20.0, "city": city}
     """Retrieve the current weather data for a specific city."""
     if not BaseDefaultApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
