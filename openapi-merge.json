@@ -4,5 +4,8 @@
     { "inputFile": "weatherapiv1.yaml" }
   ],
  
-  "output": "merged.yaml"
+  "output": "merged.yaml",
+  "options": {
+    "allowDuplicatePaths": true
+  }
 }
