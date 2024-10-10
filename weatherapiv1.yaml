@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Weather API
+  description: A simple API for retrieving weather information.
+  version: 1.0.0
+
+servers:
+  - url: https://api.weather.com/v1
+
+paths:
+  /weather:
+    get:
+      summary: Get current weather
+      description: Retrieve the current weather data for a specific city.
+      parameters:
+        - name: city
+          in: query
+          required: true
+          description: Name of the city to retrieve weather for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON object containing the current weather.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  temperature:
+                    type: number
+                    example: 22.5
+                  description:
+                    type: string
+                    example: Clear sky
+                  city:
+                    type: string
+                    example: London
+        '400':
+          description: Invalid city name provided.
+        '500':
+          description: Internal server error.
+
+  /forecast:
+    get:
+      summary: Get 5-day weather forecast
+      description: Retrieve the 5-day weather forecast data for a specific city.
+      parameters:
+        - name: city
+          in: query
+          required: true
+          description: Name of the city to retrieve the forecast for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON object containing the 5-day weather forecast.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  forecast:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          example: 2024-10-09
+                        temperature:
+                          type: number
+                          example: 18.7
+                        description:
+                          type: string
+                          example: Light rain
+        '400':
+          description: Invalid city name provided.
+        '500':
+          description: Internal server error.
